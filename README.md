@@ -1,59 +1,25 @@
-# FinanceDashboard
+# 📊 Dashboard Financiero
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.3.
+Una aplicación web interactiva diseñada para gestionar presupuestos, calcular ratios de deuda a ingresos y proporcionar reportes financieros detallados.
 
-## Development server
+## 🛠️ Tecnologías Utilizadas
 
-To start a local development server, run:
+* **Frontend:** Angular (Signals, Server-Side Rendering)
+* **Lenguaje:** TypeScript, HTML5, CSS3
+* **Backend:** Node.js (API REST)
 
-```bash
-ng serve
-```
+## 🚀 Características Principales
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Gestión de Presupuestos:** Interfaz para asignar y monitorear el dinero gastado frente al asignado mensual.
+* **Planificador de Deudas:** Cálculo automático de porcentajes de deuda y planes de pago estructurados.
+* **Estado Reactivo:** Actualizaciones de la interfaz en tiempo real utilizando las últimas características reactivas de Angular.
 
-## Code scaffolding
+## 💻 Instalación y Uso Local
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Sigue estos comandos para ejecutar el código en tu máquina:
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Clona este repositorio: `git clone [url-del-repositorio]`
+2. Abre la terminal en la carpeta del proyecto.
+3. Instala las dependencias: `npm install`
+4. Inicia el servidor de desarrollo: `npm run start`
+5. Abre tu navegador web en `http://localhost:4200/`
