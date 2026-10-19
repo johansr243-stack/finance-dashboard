@@ -1,0 +1,54 @@
+<!-- Ubicación: src/app/components/budget/budget.html -->
+<section class="budget-view">
+    <header class="view-header">
+        <h1>Resumen de Presupuestos</h1>
+        <button class="btn-add">+ Nuevo Presupuesto</button>
+    </header>
+
+    <!-- Contenedor principal tipo Grid para las tarjetas -->
+    <div class="budget-grid">
+
+        <!-- Tarjeta de ejemplo 1 -->
+        <article class="budget-card">
+            <div class="card-header">
+                <h3>Alimentación</h3>
+                <span class="category-icon">🛒</span>
+            </div>
+
+            <div class="card-body">
+                <div class="amount-details">
+                    <span class="spent">$150.000</span>
+                    <span class="allocated">de $300.000</span>
+                </div>
+
+                <!-- Barra de progreso -->
+                <div class="progress-container">
+                    <!-- El style width será dinámico luego usando [style.width]="porcentaje" -->
+                    <div class="progress-fill warning" style="width: 50%;"></div>
+                </div>
+                <p class="status-text">Te queda el 50% de tu presupuesto.</p>
+            </div>
+        </article>
+
+        <!-- Tarjeta de ejemplo 2 -->
+        <article class="budget-card">
+            <div class="card-header">
+                <h3>Transporte</h3>
+                <span class="category-icon">🚌</span>
+            </div>
+
+            <div class="card-body">
+                <div class="amount-details">
+                    <span class="spent">$90.000</span>
+                    <span class="allocated">de $100.000</span>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-fill danger" style="width: 90%;"></div>
+                </div>
+                <p class="status-text text-danger">¡Atención! Estás al límite.</p>
+            </div>
+        </article>
+
+    </div>
+</section>

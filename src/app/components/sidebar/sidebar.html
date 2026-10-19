@@ -1,0 +1,20 @@
+<!-- Ubicación: src/app/components/sidebar/sidebar.html -->
+<aside class="sidebar-container">
+  <div class="sidebar-brand">
+    <h2>Mi Finanzas</h2>
+  </div>
+
+  <nav class="sidebar-nav">
+    <!-- routerLink permite la navegación en Angular (SPA) -->
+    <!-- routerLinkActive aplica una clase CSS cuando el usuario está en esa ruta -->
+    <a routerLink="/budget" routerLinkActive="active-link" class="nav-item">
+      <span class="icon">📊</span>
+      <span>Presupuestos</span>
+    </a>
+
+    <a routerLink="/debts" routerLinkActive="active-link" class="nav-item">
+      <span class="icon">💳</span>
+      <span>Deudas</span>
+    </a>
+  </nav>
+</aside>

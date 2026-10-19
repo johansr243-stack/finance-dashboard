@@ -1,0 +1,79 @@
+<div class="debts-container-panel">
+    <div class="debts-header">
+        <div>
+            <h2>Plan de Choque · Deudas</h2>
+            <p class="subtitle">Estrategia avalancha — ataca primero la de mayor interés</p>
+        </div>
+
+        <div class="header-badges">
+            <div class="total-badge">
+                <span>Total adeudado</span>
+                <strong>${{ financeService.getTotalDebt() | number:'1.0-0' }}</strong>
+            </div>
+            <div class="payoff-badge" [class.badge-warning]="!financeService.payoffPlan().reachable">
+                <span>Libre de deudas en</span>
+                <strong>
+                    @if (financeService.payoffPlan().reachable) {
+                        {{ financeService.payoffPlan().months }} meses
+                    } @else {
+                        revisa tus cuotas
+                    }
+                </strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lectura narrativa del plan: convierte la simulación en una frase accionable -->
+    <div class="insight-strip">
+        <span class="insight-icon">✨</span>
+        <p>{{ financeService.insightMessage() }}</p>
+    </div>
+
+    <!-- Alta de nuevas deudas -->
+    <div class="add-debt-form">
+        <input type="text" [(ngModel)]="newDebtName" placeholder="Nombre (Ej. Tarjeta)">
+        <input type="number" [(ngModel)]="newDebtAmount" placeholder="Saldo">
+        <input type="number" [(ngModel)]="newDebtMinPayment" placeholder="Cuota mínima">
+        <input type="number" [(ngModel)]="newDebtRate" placeholder="Interés %" step="0.1">
+        <button class="btn-add" (click)="addDebt()">+ Agregar</button>
+    </div>
+
+    <div class="debts-list">
+        @for (debt of financeService.myDebts(); track debt.name; let i = $index) {
+        <div class="debt-card">
+            <div class="debt-main">
+                <div class="debt-title">
+                    <span class="rank-pill">#{{ getRank(debt.name) }} prioridad</span>
+                    <h3>{{ debt.name }}</h3>
+                </div>
+
+                <div class="debt-actions">
+                    <span class="rate-badge">{{ debt.interestRate }}% interés</span>
+                    <button class="btn-delete" (click)="deleteDebt(i)">✖</button>
+                </div>
+            </div>
+
+            <div class="debt-progress">
+                <div class="progress-track">
+                    <div class="progress-fill" [style.width.%]="getShare(debt)"></div>
+                </div>
+                <div class="progress-meta">
+                    <span>{{ getShare(debt) | number:'1.0-0' }}% de la deuda total</span>
+                    <span class="payoff-month">Saldada en el mes {{ getPayoffMonths(debt.name) }}</span>
+                </div>
+            </div>
+
+            <div class="debt-details">
+                <div class="detail">
+                    <span>Saldo pendiente</span>
+                    <strong>${{ debt.totalAmount | number:'1.0-0' }}</strong>
+                </div>
+                <div class="detail">
+                    <span>Cuota mínima</span>
+                    <strong>${{ debt.minPayment | number:'1.0-0' }}</strong>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,121 @@
+/* Ubicación: src/app/components/budget/budget.css */
+.budget-view {
+    padding: 30px;
+    /* El margen izquierdo compensa el ancho del sidebar fijo */
+    margin-left: 250px;
+    background-color: #f8fafc;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.view-header h1 {
+    color: #0f172a;
+    margin: 0;
+}
+
+.btn-add {
+    background-color: #10b981;
+    /* Verde éxito */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #059669;
+}
+
+.budget-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.budget-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-header h3 {
+    margin: 0;
+    color: #334155;
+    font-size: 1.1rem;
+}
+
+.category-icon {
+    font-size: 1.5rem;
+}
+
+.amount-details {
+    margin-bottom: 10px;
+}
+
+.spent {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+.allocated {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* Estilos de la barra de progreso */
+.progress-container {
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.progress-fill.warning {
+    background-color: #f59e0b;
+}
+
+/* Naranja */
+.progress-fill.danger {
+    background-color: #ef4444;
+}
+
+/* Rojo */
+
+.status-text {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.text-danger {
+    color: #ef4444;
+    font-weight: 500;
+}

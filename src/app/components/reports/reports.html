@@ -1,0 +1,64 @@
+<div class="reports-container panel">
+    <div class="reports-header">
+        <h2>Reportes</h2>
+        <p class="subtitle">Un vistazo claro a cómo se mueve tu dinero</p>
+    </div>
+
+    <div class="report-block">
+        <h3>Distribución del gasto</h3>
+        @if (sortedExpenses.length === 0) {
+        <p class="empty-state">Aún no has registrado gastos en Resumen.</p>
+        } @else {
+        <div class="bars-list">
+            @for (expense of sortedExpenses; track expense.category) {
+            <div class="bar-row">
+                <div class="bar-label">
+                    <span>{{ expense.category }}</span>
+                    <strong>${{ expense.amount | number:'1.0-0' }}</strong>
+                </div>
+                <div class="bar-track">
+                    <div class="bar-fill" [style.width.%]="getExpenseShare(expense.amount)"></div>
+                </div>
+            </div>
+            }
+        </div>
+        }
+    </div>
+
+    <div class="report-block">
+        <h3>Flujo mensual</h3>
+        <div class="flow-compare">
+            <div class="flow-item flow-income">
+                <span>Ingresos</span>
+                <div class="flow-track">
+                    <div class="flow-fill" [style.width.%]="100"></div>
+                </div>
+                <strong>${{ financeService.monthlyIncome() | number:'1.0-0' }}</strong>
+            </div>
+            <div class="flow-item flow-expense">
+                <span>Gastos</span>
+                <div class="flow-track">
+                    <div class="flow-fill" [style.width.%]="getFlowShare(financeService.getTotalExpenses())"></div>
+                </div>
+                <strong>${{ financeService.getTotalExpenses() | number:'1.0-0' }}</strong>
+            </div>
+            <div class="flow-item flow-surplus">
+                <span>Excedente</span>
+                <div class="flow-track">
+                    <div class="flow-fill" [style.width.%]="getFlowShare(financeService.getSurplus())"></div>
+                </div>
+                <strong>${{ financeService.getSurplus() | number:'1.0-0' }}</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="report-block">
+        <h3>Avalancha vs. solo mínimos</h3>
+        <p class="savings-line">
+            Pagando solo las cuotas mínimas, el interés total proyectado de tus deudas actuales es de
+            <strong>${{ financeService.minimumsOnlyPlan().totalInterest | number:'1.0-0' }}</strong>.
+            Con la estrategia avalancha (usando tu excedente mensual), te ahorras aproximadamente
+            <strong class="highlight">${{ interestSavings | number:'1.0-0' }}</strong> en intereses.
+        </p>
+    </div>
+</div>

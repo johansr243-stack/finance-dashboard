@@ -1,0 +1,33 @@
+<!-- Fondo líquido: orbes de color difuminados detrás de todo el layout -->
+<div class="liquid-bg" aria-hidden="true">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="dashboard-layout">
+  <!-- Menú de navegación lateral -->
+  <aside class="sidebar">
+    <app-sidebar></app-sidebar>
+  </aside>
+
+  <!-- Área principal de contenido: cada ruta inyecta su propia página aquí -->
+  <main class="main-content">
+    <header class="top-nav">
+      <div class="brand-block">
+        <h1>Panel Financiero</h1>
+        <p class="brand-sub">Control total de tus finanzas personales</p>
+      </div>
+
+      <div class="top-nav-actions">
+        <div [class]="'health-ring ring-' + getHealthLevel()" [style.--pct]="financeService.debtToIncomeRatio()"
+          [title]="'Compromiso de ingresos en deuda: ' + (financeService.debtToIncomeRatio() | number:'1.0-0') + '%'">
+          <span>{{ financeService.debtToIncomeRatio() | number:'1.0-0' }}%</span>
+        </div>
+        <div class="user-profile">JD</div>
+      </div>
+    </header>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>
